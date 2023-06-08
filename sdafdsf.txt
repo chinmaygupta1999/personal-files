@@ -1,0 +1,33 @@
+<h2>New Page</h2>
+
+<form>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+  </div>
+
+  <div>
+    <label for="excelFile">Upload an Excel File:</label>
+    <input type="file" id="excelFile" name="excelFile">
+  </div>
+
+  <div>
+    <label for="solverType">Solver Type:</label>
+    <select id="solverType" name="solverType">
+      <option value="classical">Classical</option>
+      <option value="quantum">Quantum</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="solverName">Solver Name:</label>
+    <input type="text" id="solverName" name="solverName">
+  </div>
+
+  <div>
+    <label for="solverGoal">Solver Goal:</label>
+    <input type="text" id="solverGoal" name="solverGoal">
+  </div>
+
+  <button type="button" (click)="printSelections()">Print Selections</button>
+</form>
