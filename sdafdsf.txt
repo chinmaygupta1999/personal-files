@@ -1,33 +1,22 @@
-<h2>New Page</h2>
+import { Component } from '@angular/core';
 
-<form>
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name">
-  </div>
+@Component({
+  selector: 'app-new',
+  templateUrl: './new.component.html',
+  styleUrls: ['./new.component.css']
+})
+export class NewComponent {
+  printSelections(): void {
+    const name = (document.getElementById('name') as HTMLInputElement).value;
+    const excelFile = (document.getElementById('excelFile') as HTMLInputElement).files[0];
+    const solverType = (document.getElementById('solverType') as HTMLSelectElement).value;
+    const solverName = (document.getElementById('solverName') as HTMLInputElement).value;
+    const solverGoal = (document.getElementById('solverGoal') as HTMLInputElement).value;
 
-  <div>
-    <label for="excelFile">Upload an Excel File:</label>
-    <input type="file" id="excelFile" name="excelFile">
-  </div>
-
-  <div>
-    <label for="solverType">Solver Type:</label>
-    <select id="solverType" name="solverType">
-      <option value="classical">Classical</option>
-      <option value="quantum">Quantum</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="solverName">Solver Name:</label>
-    <input type="text" id="solverName" name="solverName">
-  </div>
-
-  <div>
-    <label for="solverGoal">Solver Goal:</label>
-    <input type="text" id="solverGoal" name="solverGoal">
-  </div>
-
-  <button type="button" (click)="printSelections()">Print Selections</button>
-</form>
+    console.log('Name:', name);
+    console.log('Excel File:', excelFile);
+    console.log('Solver Type:', solverType);
+    console.log('Solver Name:', solverName);
+    console.log('Solver Goal:', solverGoal);
+  }
+}
