@@ -1,22 +1,8 @@
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
-})
-export class NewComponent {
-  printSelections(): void {
-    const name = (document.getElementById('name') as HTMLInputElement).value;
-    const excelFile = (document.getElementById('excelFile') as HTMLInputElement).files[0];
-    const solverType = (document.getElementById('solverType') as HTMLSelectElement).value;
-    const solverName = (document.getElementById('solverName') as HTMLInputElement).value;
-    const solverGoal = (document.getElementById('solverGoal') as HTMLInputElement).value;
-
-    console.log('Name:', name);
-    console.log('Excel File:', excelFile);
-    console.log('Solver Type:', solverType);
-    console.log('Solver Name:', solverName);
-    console.log('Solver Goal:', solverGoal);
-  }
-}
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">An error occurred while fetching the details.</div>
+<div *ngIf="details">
+  <h2>Details for ID: {{ id }}</h2>
+  <p>Property 1: {{ details.property1 }}</p>
+  <p>Property 2: {{ details.property2 }}</p>
+  <!-- Add more properties as needed -->
+</div>
