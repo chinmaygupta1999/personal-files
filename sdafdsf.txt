@@ -1,8 +1,42 @@
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="error">An error occurred while fetching the details.</div>
-<div *ngIf="details">
-  <h2>Details for ID: {{ id }}</h2>
-  <p>Property 1: {{ details.property1 }}</p>
-  <p>Property 2: {{ details.property2 }}</p>
-  <!-- Add more properties as needed -->
-</div>
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.css']
+})
+export class DetailsComponent implements OnInit {
+  id: string;
+  details: any;
+  loading: boolean = true;
+  error: boolean = false;
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.fetchDetails();
+    });
+  }
+
+  fetchDetails() {
+    this.loading = true;
+    this.error = false;
+
+    this.http.get(`/api/details/${this.id}`)
+      .subscribe(
+        (data: any) => {
+          this.details = data;
+          this.loading = false;
+        },
+        error => {
+          console.log(error);
+          this.error = true;
+          this.loading = false;
+        }
+      );
+  }
+}
