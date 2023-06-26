@@ -1,42 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import pandas as pd
+import polars as pl
+import time
 
-@Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
-})
-export class DetailsComponent implements OnInit {
-  id: string;
-  details: any;
-  loading: boolean = true;
-  error: boolean = false;
+# Create a Pandas DataFrame
+pandas_df = pd.DataFrame({'A': range(1, 1000001), 'B': range(1000001, 2000001)})
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+# Create a Polars DataFrame from the Pandas DataFrame
+polars_df = pl.from_pandas(pandas_df)
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.fetchDetails();
-    });
-  }
+# Perform a simple data manipulation operation using Pandas
+start_time = time.time()
+pandas_result = pandas_df['A'] + pandas_df['B']
+pandas_execution_time = time.time() - start_time
 
-  fetchDetails() {
-    this.loading = true;
-    this.error = false;
+# Perform the same data manipulation operation using Polars
+start_time = time.time()
+polars_result = polars_df['A'] + polars_df['B']
+polars_execution_time = time.time() - start_time
 
-    this.http.get(`/api/details/${this.id}`)
-      .subscribe(
-        (data: any) => {
-          this.details = data;
-          this.loading = false;
-        },
-        error => {
-          console.log(error);
-          this.error = true;
-          this.loading = false;
-        }
-      );
-  }
-}
+# Print the results and execution times
+print("Pandas result:")
+print(pandas_result)
+print("Execution time: ", pandas_execution_time, " seconds")
+
+print("\nPolars result:")
+print(polars_result)
+print("Execution time: ", polars_execution_time, " seconds")
