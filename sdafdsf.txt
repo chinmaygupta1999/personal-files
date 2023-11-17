@@ -1,28 +1,26 @@
-import pandas as pd
-import polars as pl
-import time
+Subject: Formal Notice of Resignation and Intent to Serve Notice Period
 
-# Create a Pandas DataFrame
-pandas_df = pd.DataFrame({'A': range(1, 1000001), 'B': range(1000001, 2000001)})
+Dear Mr. Modak,
 
-# Create a Polars DataFrame from the Pandas DataFrame
-polars_df = pl.from_pandas(pandas_df)
+I hope this message finds you well. I am writing to inform you that I have decided to resign from my position at [Company Name] and would like to serve the standard notice period of three months, in accordance with my employment contract.
 
-# Perform a simple data manipulation operation using Pandas
-start_time = time.time()
-pandas_result = pandas_df['A'] + pandas_df['B']
-pandas_execution_time = time.time() - start_time
+I have thoroughly enjoyed my time working with the team and have learned a great deal during my tenure. However, after careful consideration, I believe it is time for me to pursue new opportunities and challenges to further enhance my professional growth.
 
-# Perform the same data manipulation operation using Polars
-start_time = time.time()
-polars_result = polars_df['A'] + polars_df['B']
-polars_execution_time = time.time() - start_time
+I am committed to ensuring a smooth transition during my notice period and will work diligently to complete any outstanding projects and assist in the knowledge transfer process. I am open to discussing how we can best manage this transition to minimize any disruption to the team and the organization.
 
-# Print the results and execution times
-print("Pandas result:")
-print(pandas_result)
-print("Execution time: ", pandas_execution_time, " seconds")
+I would like to express my gratitude for the support and opportunities provided to me during my time here. I have gained valuable experience and have great respect for the company and my colleagues.
 
-print("\nPolars result:")
-print(polars_result)
-print("Execution time: ", polars_execution_time, " seconds")
+I am willing to discuss this further at your earliest convenience and am open to scheduling a meeting to address any questions or concerns you may have.
+
+Thank you for your understanding, and I appreciate your support throughout my time at [Company Name].
+
+Sincerely,
+
+[Your Full Name]
+[Your Position]
+[Your Contact Information]
+
+
+
+
+
